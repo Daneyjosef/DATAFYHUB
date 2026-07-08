@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
 
@@ -38,9 +39,14 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="#" className="flex items-center gap-2 font-heading text-xl font-bold">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-              <Zap size={18} className="text-dark" />
-            </span>
+            <Image
+              src="/logo hub (2).png"
+              alt="Datafy Hub"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+              priority
+            />
             Datafy <span className="gradient-text">Hub</span>
           </a>
 

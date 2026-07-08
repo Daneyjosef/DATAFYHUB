@@ -1,4 +1,5 @@
-import { Twitter, Linkedin, Instagram, Zap } from "lucide-react";
+import Image from "next/image";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 
 export default function Footer() {
@@ -9,9 +10,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2 font-heading text-lg font-bold">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-                <Zap size={16} className="text-dark" />
-              </span>
+              <Image
+                src="/logo hub (2).png"
+                alt="Datafy Hub"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
               Datafy Hub
             </div>
             <p className="mt-3 text-sm text-text-secondary">{SITE.tagline}</p>

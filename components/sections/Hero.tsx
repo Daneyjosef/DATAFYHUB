@@ -30,6 +30,16 @@ export default function Hero({ onBook }: { onBook: () => void }) {
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden pt-24">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/hero-hero.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-dark/70" />
       <div className="bg-grid absolute inset-0 opacity-40" />
       <div
         ref={bgRef}

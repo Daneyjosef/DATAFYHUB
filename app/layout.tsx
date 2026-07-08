@@ -26,6 +26,11 @@ export const metadata: Metadata = {
       "Premium coworking space on the 9th Floor of Cocoa House, Dugbe, Ibadan.",
     images: ["/og-image.png"],
   },
+  icons: {
+    icon: [{ url: "/favicon.jpg", type: "image/jpeg" }],
+    shortcut: ["/favicon.jpg"],
+    apple: [{ url: "/favicon.jpg" }],
+  },
 };
 
 export default function RootLayout({

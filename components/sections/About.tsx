@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
+import Image from "next/image";
 import AnimatedCounter from "../ui/AnimatedCounter";
 
 const STATS = [
@@ -61,12 +61,14 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative"
         >
-          {/* TODO: Replace with actual image */}
-          <div className="glow-border flex aspect-[4/3] items-center justify-center rounded-3xl border border-white/10 bg-gradient-to-br from-primary/20 via-surface to-accent/10">
-            <div className="flex flex-col items-center gap-3 text-text-secondary">
-              <Camera size={40} />
-              <span className="text-sm">Your workspace photo here</span>
-            </div>
+          <div className="glow-border relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+            <Image
+              src="/hero-poster.jpeg"
+              alt="Datafy Hub workspace"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
           </div>
         </motion.div>
       </div>
