@@ -210,7 +210,7 @@ export default function BookingModal({
             </div>
 
             {!submitted && (
-              <div className="border-t border-border px-6 py-5">
+              <div className="safe-bottom border-t border-border px-6 py-5">
                 <Button
                   className="w-full"
                   disabled={!canProceed(step)}
@@ -221,7 +221,7 @@ export default function BookingModal({
               </div>
             )}
             {submitted && (
-              <div className="border-t border-border px-6 py-5">
+              <div className="safe-bottom border-t border-border px-6 py-5">
                 <Button className="w-full" onClick={onClose}>
                   Done
                 </Button>

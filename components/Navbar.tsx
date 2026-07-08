@@ -34,7 +34,7 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
       <motion.header
         animate={{ y: hidden ? -100 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        className={`safe-top fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           scrolled ? "glass border-b border-border" : ""
         }`}
       >
@@ -89,7 +89,7 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-canvas md:hidden"
+            className="safe-top safe-bottom fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-canvas md:hidden"
           >
             {NAV_LINKS.map((link, i) => (
               <motion.a

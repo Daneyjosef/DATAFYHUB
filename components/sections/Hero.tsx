@@ -29,7 +29,7 @@ export default function Hero({ onBook }: { onBook: () => void }) {
   const words = HEADLINE.split(" ");
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-24">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
       <video
         autoPlay
         loop
