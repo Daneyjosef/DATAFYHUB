@@ -4,7 +4,7 @@ import { NAV_LINKS, SITE } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-surface">
+    <footer className="relative border-t border-border bg-surface">
       <div className="h-px w-full bg-gradient-to-r from-primary via-accent to-primary" />
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white">Quick Links</h4>
+            <h4 className="text-sm font-semibold text-foreground">Quick Links</h4>
             <ul className="mt-4 space-y-2">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white">Contact</h4>
+            <h4 className="text-sm font-semibold text-foreground">Contact</h4>
             <ul className="mt-4 space-y-2 text-sm text-text-secondary">
               <li>{SITE.address}</li>
               <li>{SITE.phones.join(" | ")}</li>
@@ -48,26 +48,26 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white">Follow Us</h4>
+            <h4 className="text-sm font-semibold text-foreground">Follow Us</h4>
             <div className="mt-4 flex gap-3">
               <a
                 href="#"
                 aria-label="Twitter"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-text-secondary hover:border-accent hover:text-accent"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary hover:border-accent hover:text-accent"
               >
                 <Twitter size={16} />
               </a>
               <a
                 href="#"
                 aria-label="LinkedIn"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-text-secondary hover:border-accent hover:text-accent"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary hover:border-accent hover:text-accent"
               >
                 <Linkedin size={16} />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-text-secondary hover:border-accent hover:text-accent"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-text-secondary hover:border-accent hover:text-accent"
               >
                 <Instagram size={16} />
               </a>
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-text-secondary">
+        <div className="mt-12 border-t border-border pt-6 text-center text-xs text-text-secondary">
           © 2026 Datafy Hub. All rights reserved. Powered by Datafy
           Technologies Limited.
         </div>

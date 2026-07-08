@@ -27,7 +27,7 @@ export default function StepPersonalDetails({
           </label>
           <input
             {...register("fullName", { required: "Full name is required" })}
-            className="w-full rounded-lg border border-white/10 bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
+            className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
             placeholder="Jane Doe"
           />
           {errors.fullName && (
@@ -45,7 +45,7 @@ export default function StepPersonalDetails({
               required: "Email is required",
               pattern: { value: /^\S+@\S+\.\S+$/, message: "Enter a valid email" },
             })}
-            className="w-full rounded-lg border border-white/10 bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
+            className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
             placeholder="jane@example.com"
           />
           {errors.email && (
@@ -57,7 +57,7 @@ export default function StepPersonalDetails({
           <label className="mb-1.5 block text-xs font-medium text-text-secondary">
             Phone Number
           </label>
-          <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-surface px-4 py-2.5 focus-within:border-accent">
+          <div className="flex items-center gap-2 rounded-lg border border-border bg-surface px-4 py-2.5 focus-within:border-accent">
             <span className="text-sm text-text-secondary">+234</span>
             <input
               {...register("phone", {
@@ -79,7 +79,7 @@ export default function StepPersonalDetails({
           </label>
           <input
             {...register("company")}
-            className="w-full rounded-lg border border-white/10 bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
+            className="w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
             placeholder="Acme Inc."
           />
         </div>
@@ -91,7 +91,7 @@ export default function StepPersonalDetails({
           <textarea
             {...register("notes")}
             rows={3}
-            className="w-full resize-none rounded-lg border border-white/10 bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
+            className="w-full resize-none rounded-lg border border-border bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent"
             placeholder="Anything we should know?"
           />
         </div>

@@ -59,7 +59,7 @@ export default function Contact({ onBook }: { onBook: () => void }) {
           <Button onClick={onBook}>Book a Space</Button>
           <a
             href="#contact-form"
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+            className="rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
           >
             Send a Message
           </a>
@@ -72,13 +72,13 @@ export default function Contact({ onBook }: { onBook: () => void }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mx-auto mt-16 max-w-lg space-y-4 rounded-2xl border border-white/10 bg-surface p-6 text-left"
+          className="mx-auto mt-16 max-w-lg space-y-4 rounded-2xl border border-border bg-surface p-6 text-left"
         >
           <div>
             <input
               {...register("name", { required: "Name is required" })}
               placeholder="Your Name"
-              className="w-full rounded-lg border border-white/10 bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
+              className="w-full rounded-lg border border-border bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
             />
             {errors.name && (
               <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>
@@ -89,7 +89,7 @@ export default function Contact({ onBook }: { onBook: () => void }) {
               type="email"
               {...register("email", { required: "Email is required" })}
               placeholder="Your Email"
-              className="w-full rounded-lg border border-white/10 bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
+              className="w-full rounded-lg border border-border bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
             />
             {errors.email && (
               <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
@@ -100,7 +100,7 @@ export default function Contact({ onBook }: { onBook: () => void }) {
               {...register("message", { required: "Message is required" })}
               placeholder="Your Message"
               rows={4}
-              className="w-full resize-none rounded-lg border border-white/10 bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
+              className="w-full resize-none rounded-lg border border-border bg-surface-light px-4 py-2.5 text-sm outline-none focus:border-accent"
             />
             {errors.message && (
               <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>

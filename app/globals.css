@@ -5,10 +5,27 @@
 :root {
   --primary: #43a047;
   --accent: #8bc34a;
-  --dark: #0a0a0f;
-  --surface: #13131a;
-  --surface-light: #1e1e2e;
+  --bg-primary: #f8f8fc;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f0f0f8;
+  --text-primary: #0a0a0f;
+  --text-secondary: #5a5a72;
+  --border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --card-shadow: 0 8px 24px rgba(10, 10, 15, 0.08);
+  --orb-opacity: 0.3;
+}
+
+.dark {
+  --bg-primary: #0a0a0f;
+  --bg-surface: #13131a;
+  --bg-surface-2: #1e1e2e;
+  --text-primary: #ffffff;
   --text-secondary: #a0a0b0;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(19, 19, 26, 0.6);
+  --card-shadow: none;
+  --orb-opacity: 1;
 }
 
 * {
@@ -16,16 +33,17 @@
 }
 
 body {
-  background-color: var(--dark);
-  color: #ffffff;
-  font-family: var(--font-inter), sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-heading), sans-serif;
 }
 
 ::selection {
@@ -37,10 +55,10 @@ h4 {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--dark);
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--surface-light);
+  background: var(--bg-surface-2);
   border-radius: 8px;
 }
 
@@ -52,9 +70,13 @@ h4 {
 }
 
 .glass {
-  background: rgba(19, 19, 26, 0.6);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+.card-shadow {
+  box-shadow: var(--card-shadow);
 }
 
 .glow-border {
@@ -109,19 +131,18 @@ h4 {
 }
 
 .bg-grid {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(128, 128, 140, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(128, 128, 140, 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .dh-daypicker {
-  --rdp-accent-color: #00f5d4;
-  --rdp-background-color: rgba(0, 245, 212, 0.15);
-  color: #fff;
+  --rdp-accent-color: var(--accent);
+  --rdp-background-color: rgba(139, 195, 74, 0.15);
+  color: var(--text-primary);
 }
 .dh-daypicker .rdp-day_selected,
 .dh-daypicker .rdp-day_selected:hover {
   background-color: var(--accent);
   color: #0a0a0f;
 }
-

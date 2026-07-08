@@ -30,7 +30,7 @@ export default function StepConfirmation({
           Thank you! We&apos;ll reach out to you at{" "}
           <span className="text-accent">{booking.details.email}</span> within
           24 hours to confirm your booking. Questions? Call{" "}
-          <span className="text-white">+234 707 241 2697</span>
+          <span className="text-foreground">+234 707 241 2697</span>
         </p>
       </div>
     );
@@ -51,14 +51,14 @@ export default function StepConfirmation({
         Please review your booking details before confirming.
       </p>
 
-      <div className="mt-6 space-y-3 rounded-xl border border-white/10 bg-surface p-5">
+      <div className="mt-6 space-y-3 rounded-xl border border-border bg-surface p-5">
         <Row label="Space Type" value={space.name} />
         <Row label="Duration" value={booking.duration} />
         <Row label="Date" value={dateLabel} />
         <Row label="Name" value={booking.details.fullName} />
         <Row label="Email" value={booking.details.email} />
         <Row label="Phone" value={`+234${booking.details.phone}`} />
-        <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3">
+        <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
           <span className="text-sm text-text-secondary">Total</span>
           <span className="font-heading text-2xl font-bold text-accent">
             ₦{booking.total.toLocaleString()}

@@ -24,7 +24,7 @@ export default function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden rounded-2xl border border-white/10 lg:col-span-2"
+            className="overflow-hidden rounded-2xl border border-border lg:col-span-2"
           >
             <iframe
               title="Cocoa House, Dugbe, Ibadan"
@@ -42,7 +42,7 @@ export default function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="glow-border flex flex-col gap-6 rounded-2xl border border-white/10 bg-surface p-6"
+            className="glow-border flex flex-col gap-6 rounded-2xl border border-border bg-surface p-6"
           >
             <InfoRow icon={<MapPin size={18} />} text={SITE.address} />
             <InfoRow

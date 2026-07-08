@@ -55,7 +55,7 @@ export default function StepSelectDate({
               "rounded-full px-4 py-2 text-xs font-medium transition-colors",
               duration === d.key
                 ? "bg-gradient-to-r from-primary to-accent text-dark"
-                : "border border-white/10 text-text-secondary hover:border-primary/40"
+                : "border border-border text-text-secondary hover:border-primary/40"
             )}
           >
             {d.label}
@@ -63,7 +63,7 @@ export default function StepSelectDate({
         ))}
       </div>
 
-      <div className="mt-6 flex justify-center rounded-xl border border-white/10 bg-surface p-2">
+      <div className="mt-6 flex justify-center rounded-xl border border-border bg-surface p-2">
         {duration === "daily" ? (
           <DayPicker
             mode="single"

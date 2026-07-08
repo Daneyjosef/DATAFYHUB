@@ -28,7 +28,7 @@ export default function StepSelectSpace({
                 "flex flex-col items-start gap-2 rounded-xl border p-4 text-left transition-all duration-200",
                 isSelected
                   ? "border-accent bg-surface-light shadow-lg shadow-accent/10"
-                  : "border-white/10 bg-surface hover:border-primary/40"
+                  : "border-border bg-surface hover:border-primary/40"
               )}
             >
               <div
@@ -36,7 +36,7 @@ export default function StepSelectSpace({
                   "flex h-9 w-9 items-center justify-center rounded-lg",
                   isSelected
                     ? "bg-gradient-to-br from-primary to-accent"
-                    : "bg-white/5"
+                    : "bg-black/5 dark:bg-white/5"
                 )}
               >
                 <Icon size={16} className={isSelected ? "text-dark" : "text-accent"} />

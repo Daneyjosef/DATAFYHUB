@@ -15,12 +15,12 @@ export default function Loader() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-canvas"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
           <motion.h1
-            className="font-heading text-3xl font-bold tracking-tight text-white md:text-5xl"
+            className="font-heading text-3xl font-bold tracking-tight text-foreground md:text-5xl"
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}

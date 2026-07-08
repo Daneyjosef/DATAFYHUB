@@ -144,10 +144,10 @@ export default function BookingModal({
             transition={{ type: "spring", damping: 28, stiffness: 260 }}
             className="fixed inset-y-0 right-0 z-[70] flex w-full flex-col bg-surface shadow-2xl sm:w-[480px]"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-border px-6 py-5">
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 text-sm text-text-secondary hover:text-white"
+                className="flex items-center gap-1 text-sm text-text-secondary hover:text-foreground"
               >
                 <ChevronLeft size={18} /> Back
               </button>
@@ -156,12 +156,12 @@ export default function BookingModal({
                   <div
                     key={s}
                     className={`h-1.5 w-6 rounded-full transition-colors ${
-                      i <= step ? "bg-gradient-to-r from-primary to-accent" : "bg-white/10"
+                      i <= step ? "bg-gradient-to-r from-primary to-accent" : "bg-black/10 dark:bg-white/10"
                     }`}
                   />
                 ))}
               </div>
-              <button onClick={onClose} className="text-text-secondary hover:text-white">
+              <button onClick={onClose} className="text-text-secondary hover:text-foreground">
                 <X size={20} />
               </button>
             </div>
@@ -210,7 +210,7 @@ export default function BookingModal({
             </div>
 
             {!submitted && (
-              <div className="border-t border-white/10 px-6 py-5">
+              <div className="border-t border-border px-6 py-5">
                 <Button
                   className="w-full"
                   disabled={!canProceed(step)}
@@ -221,7 +221,7 @@ export default function BookingModal({
               </div>
             )}
             {submitted && (
-              <div className="border-t border-white/10 px-6 py-5">
+              <div className="border-t border-border px-6 py-5">
                 <Button className="w-full" onClick={onClose}>
                   Done
                 </Button>

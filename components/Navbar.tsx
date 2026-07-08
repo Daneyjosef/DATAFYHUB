@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
+import ThemeToggle from "./ui/ThemeToggle";
 import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar({ onBook }: { onBook: () => void }) {
@@ -34,7 +35,7 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
         animate={{ y: hidden ? -100 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled ? "glass border-b border-white/10" : ""
+          scrolled ? "glass border-b border-border" : ""
         }`}
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -55,26 +56,30 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-text-secondary transition-colors hover:text-white"
+                className="text-sm text-text-secondary transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-3 md:flex">
+            <ThemeToggle />
             <Button variant="ghost" onClick={onBook} className="!rounded-full !border-primary/50">
               Book a Space
             </Button>
           </div>
 
-          <button
-            aria-label="Toggle menu"
-            className="text-white md:hidden"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <ThemeToggle />
+            <button
+              aria-label="Toggle menu"
+              className="text-foreground"
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              {menuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -84,7 +89,7 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-dark md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-canvas md:hidden"
           >
             {NAV_LINKS.map((link, i) => (
               <motion.a
@@ -94,7 +99,7 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                className="font-heading text-3xl font-semibold text-white"
+                className="font-heading text-3xl font-semibold text-foreground"
               >
                 {link.label}
               </motion.a>

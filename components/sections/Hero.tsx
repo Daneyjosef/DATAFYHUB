@@ -45,12 +45,12 @@ export default function Hero({ onBook }: { onBook: () => void }) {
         ref={bgRef}
         className="pointer-events-none absolute inset-0 transition-transform duration-300 ease-out"
       >
-        <div className="absolute left-[10%] top-[20%] h-72 w-72 rounded-full bg-primary/30 blur-[100px] animate-drift" />
-        <div className="absolute right-[15%] top-[10%] h-96 w-96 rounded-full bg-accent/20 blur-[120px] animate-drift-slow" />
-        <div className="absolute bottom-[10%] left-[30%] h-64 w-64 rounded-full bg-primary/20 blur-[100px] animate-drift-slow" />
+        <div className="absolute left-[10%] top-[20%] h-72 w-72 rounded-full bg-primary/30 opacity-30 blur-[100px] animate-drift dark:opacity-100" />
+        <div className="absolute right-[15%] top-[10%] h-96 w-96 rounded-full bg-accent/20 opacity-30 blur-[120px] animate-drift-slow dark:opacity-100" />
+        <div className="absolute bottom-[10%] left-[30%] h-64 w-64 rounded-full bg-primary/20 opacity-30 blur-[100px] animate-drift-slow dark:opacity-100" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white">
         <h1 className="font-heading text-4xl font-bold leading-tight tracking-tight sm:text-6xl md:text-7xl">
           {words.map((word, i) => (
             <motion.span
@@ -81,7 +81,7 @@ export default function Hero({ onBook }: { onBook: () => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary"
+          className="mx-auto mt-6 max-w-2xl text-lg text-white/70"
         >
           A premium coworking space built for the data-driven generation — 9th
           Floor, Cocoa House, Ibadan.
@@ -111,7 +111,7 @@ export default function Hero({ onBook }: { onBook: () => void }) {
           {STATS.map((stat) => (
             <span
               key={stat}
-              className="glass rounded-full border border-white/10 px-4 py-2 text-xs text-text-secondary sm:text-sm"
+              className="rounded-full border border-white/20 bg-black/30 px-4 py-2 text-xs text-white/80 backdrop-blur-md sm:text-sm"
             >
               {stat}
             </span>
@@ -124,7 +124,7 @@ export default function Hero({ onBook }: { onBook: () => void }) {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <ChevronDown className="text-text-secondary" />
+        <ChevronDown className="text-white/60" />
       </motion.div>
     </section>
   );

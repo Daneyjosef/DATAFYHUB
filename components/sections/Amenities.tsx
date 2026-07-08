@@ -27,7 +27,7 @@ export default function Amenities() {
             {chips.map((a, i) => (
               <span
                 key={`f-${i}`}
-                className="glass whitespace-nowrap rounded-full border border-white/10 px-5 py-2 text-sm text-text-secondary"
+                className="glass whitespace-nowrap rounded-full border border-border px-5 py-2 text-sm text-text-secondary"
               >
                 {a.emoji} {a.name}
               </span>
@@ -39,7 +39,7 @@ export default function Amenities() {
             {chips.map((a, i) => (
               <span
                 key={`r-${i}`}
-                className="glass whitespace-nowrap rounded-full border border-white/10 px-5 py-2 text-sm text-text-secondary"
+                className="glass whitespace-nowrap rounded-full border border-border px-5 py-2 text-sm text-text-secondary"
               >
                 {a.emoji} {a.name}
               </span>

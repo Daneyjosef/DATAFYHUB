@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-heading",
   display: "swap",
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -39,11 +40,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body className="bg-dark text-white antialiased">
-        <CustomCursor />
-        {children}
-        <Toaster theme="dark" position="top-center" richColors />
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${dmSans.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="bg-canvas text-foreground antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <CustomCursor />
+          {children}
+          <Toaster theme="system" position="top-center" richColors />
+        </ThemeProvider>
       </body>
     </html>
   );

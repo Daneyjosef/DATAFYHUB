@@ -39,7 +39,7 @@ export default function About() {
           <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <p className="font-heading text-2xl font-bold text-white md:text-3xl">
+                <p className="font-heading text-2xl font-bold text-foreground md:text-3xl">
                   <AnimatedCounter
                     value={stat.value}
                     prefix={stat.prefix}
@@ -61,7 +61,7 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative"
         >
-          <div className="glow-border relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+          <div className="glow-border relative aspect-[4/3] overflow-hidden rounded-3xl border border-border">
             <Image
               src="/hero-poster.jpeg"
               alt="Datafy Hub workspace"

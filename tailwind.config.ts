@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -12,14 +13,17 @@ const config: Config = {
         primary: "#43A047",
         accent: "#8BC34A",
         dark: "#0A0A0F",
-        surface: "#13131A",
-        "surface-light": "#1E1E2E",
-        "text-secondary": "#A0A0B0",
+        canvas: "var(--bg-primary)",
+        surface: "var(--bg-surface)",
+        "surface-light": "var(--bg-surface-2)",
+        foreground: "var(--text-primary)",
+        "text-secondary": "var(--text-secondary)",
+        border: "var(--border)",
         success: "#22C55E",
       },
       fontFamily: {
-        heading: ["var(--font-space-grotesk)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       keyframes: {
         drift: {

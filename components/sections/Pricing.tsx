@@ -34,7 +34,7 @@ export default function Pricing({ onBook }: { onBook: () => void }) {
         </motion.div>
 
         <div className="mt-10 flex justify-center">
-          <div className="glass relative flex rounded-full border border-white/10 p-1">
+          <div className="glass relative flex rounded-full border border-border p-1">
             {DURATIONS.map((d) => (
               <button
                 key={d.key}
@@ -69,7 +69,7 @@ export default function Pricing({ onBook }: { onBook: () => void }) {
                 className={`glow-border relative flex flex-col rounded-2xl border p-6 ${
                   space.popular
                     ? "border-primary/60 bg-surface-light"
-                    : "border-white/10 bg-surface/80"
+                    : "border-border bg-surface/80"
                 }`}
               >
                 {space.popular && (
