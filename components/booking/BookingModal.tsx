@@ -86,7 +86,36 @@ export default function BookingModal({
       };
       console.log("Booking submitted:", booking);
       setSubmitted(true);
-      toast.success("Booking request received!");
+
+      const dateLabel = date
+        ? date.toLocaleDateString()
+        : dateRange?.from
+        ? `${dateRange.from.toLocaleDateString()} – ${
+            dateRange.to?.toLocaleDateString() ?? "…"
+          }`
+        : "Not selected";
+
+      try {
+        const res = await fetch("/api/booking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            spaceName: space.name,
+            duration,
+            dateLabel,
+            total,
+            details: booking.details,
+          }),
+        });
+        const data = await res.json();
+        if (data.sent) {
+          toast.success("Booking request sent to Datafy Hub!");
+        } else {
+          toast.success("Booking request received!");
+        }
+      } catch {
+        toast.success("Booking request received!");
+      }
       return;
     }
     setStep((s) => Math.min(s + 1, STEPS.length - 1));

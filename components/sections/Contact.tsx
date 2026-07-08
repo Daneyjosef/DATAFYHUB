@@ -19,9 +19,23 @@ export default function Contact({ onBook }: { onBook: () => void }) {
     formState: { errors },
   } = useForm<ContactValues>();
 
-  const onSubmit = (data: ContactValues) => {
+  const onSubmit = async (data: ContactValues) => {
     console.log("Contact message:", data);
-    toast.success("Message sent! We'll get back to you soon.");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      toast.success(
+        result.sent
+          ? "Message sent! We'll get back to you soon."
+          : "Message received! We'll get back to you soon."
+      );
+    } catch {
+      toast.success("Message received! We'll get back to you soon.");
+    }
     reset();
   };
 
