@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/Navbar";
+import MobileTabBar from "@/components/MobileTabBar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Spaces from "@/components/sections/Spaces";
@@ -27,7 +28,7 @@ export default function Home() {
     <>
       <Loader />
       <Navbar onBook={() => openBooking()} />
-      <main>
+      <main className="pb-20 md:pb-0">
         <Hero onBook={() => openBooking()} />
         <About />
         <Spaces onBook={openBooking} />
@@ -38,6 +39,7 @@ export default function Home() {
         <Contact onBook={() => openBooking()} />
       </main>
       <Footer />
+      <MobileTabBar onBook={() => openBooking()} />
       <BookingModal
         open={bookingOpen}
         onClose={() => setBookingOpen(false)}
