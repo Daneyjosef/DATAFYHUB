@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Button from "./ui/Button";
 import ThemeToggle from "./ui/ThemeToggle";
 import { NAV_LINKS } from "@/lib/constants";
@@ -11,7 +10,6 @@ import { NAV_LINKS } from "@/lib/constants";
 export default function Navbar({ onBook }: { onBook: () => void }) {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   const [lastY, setLastY] = useState(0);
 
@@ -24,10 +22,6 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
     }
     setLastY(latest);
   });
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-  }, [menuOpen]);
 
   return (
     <>
@@ -72,55 +66,9 @@ export default function Navbar({ onBook }: { onBook: () => void }) {
 
           <div className="flex items-center gap-3 md:hidden">
             <ThemeToggle />
-            <button
-              aria-label="Toggle menu"
-              className="text-foreground"
-              onClick={() => setMenuOpen((v) => !v)}
-            >
-              {menuOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
           </div>
         </nav>
       </motion.header>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="safe-top safe-bottom fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-canvas md:hidden"
-          >
-            {NAV_LINKS.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i }}
-                className="font-heading text-3xl font-semibold text-foreground"
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * NAV_LINKS.length }}
-            >
-              <Button
-                onClick={() => {
-                  setMenuOpen(false);
-                  onBook();
-                }}
-              >
-                Book a Space
-              </Button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
