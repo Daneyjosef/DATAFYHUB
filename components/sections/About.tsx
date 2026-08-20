@@ -1,8 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import AnimatedCounter from "../ui/AnimatedCounter";
+import ImageSlideshow from "../ui/ImageSlideshow";
+
+const ABOUT_SLIDES = [
+  { src: "/hero-poster.jpeg", alt: "Datafy Hub workspace" },
+  { src: "/hub-1.png", alt: "Datafy Hub study room" },
+  { src: "/hub-2.png", alt: "Datafy Hub seating area" },
+];
 
 const STATS = [
   { label: "Members", value: 500, suffix: "+" },
@@ -61,15 +67,7 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative"
         >
-          <div className="glow-border relative aspect-[4/3] overflow-hidden rounded-3xl border border-border">
-            <Image
-              src="/hero-poster.jpeg"
-              alt="Datafy Hub workspace"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-            />
-          </div>
+          <ImageSlideshow slides={ABOUT_SLIDES} />
         </motion.div>
       </div>
     </section>
