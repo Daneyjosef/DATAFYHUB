@@ -37,6 +37,31 @@ export async function POST(req: Request) {
         <p><strong>Notes:</strong> ${details.notes || "-"}</p>
       `,
     });
+
+    try {
+      await resend.emails.send({
+        from: process.env.BOOKING_FROM_EMAIL ?? "Datafy Hub <onboarding@resend.dev>",
+        to: details.email,
+        replyTo: SITE.email,
+        subject: `We've received your booking request — ${spaceName}`,
+        html: `
+          <h2>Thanks for booking with Datafy Hub, ${details.fullName}!</h2>
+          <p>We've received your request and our team will confirm availability and reach out shortly.</p>
+          <hr />
+          <p><strong>Space:</strong> ${spaceName}</p>
+          <p><strong>Duration:</strong> ${duration}</p>
+          <p><strong>Date:</strong> ${dateLabel}</p>
+          <p><strong>Total:</strong> ₦${Number(total).toLocaleString()}</p>
+          <hr />
+          <p>If any of these details need adjustment, just reply to this email or reach us at ${SITE.email} / ${SITE.phones.join(" / ")}.</p>
+          <p>${SITE.address}</p>
+          <p>— The Datafy Hub Team</p>
+        `,
+      });
+    } catch (err) {
+      console.error("Failed to send booking confirmation email:", err);
+    }
+
     return NextResponse.json({ sent: true });
   } catch (err) {
     console.error("Failed to send booking email:", err);
