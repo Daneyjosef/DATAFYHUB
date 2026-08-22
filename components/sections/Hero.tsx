@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
 import Button from "../ui/Button";
 
 const HEADLINE = "Your Next Big Idea Starts Here";
@@ -13,17 +12,12 @@ const STATS = ["500+ Members", "9th Floor Views", "High-Speed WiFi"];
 export default function Hero({ onBook }: { onBook: () => void }) {
   const bgRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     setReady(true);
 
     const mq = window.matchMedia("(min-width: 768px)");
-    setShowVideo(mq.matches);
-    const handleChange = (e: MediaQueryListEvent) => setShowVideo(e.matches);
-    mq.addEventListener("change", handleChange);
-
-    if (!mq.matches) return () => mq.removeEventListener("change", handleChange);
+    if (!mq.matches) return;
 
     const handleMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
@@ -33,37 +27,23 @@ export default function Hero({ onBook }: { onBook: () => void }) {
       }
     };
     window.addEventListener("mousemove", handleMove);
-    return () => {
-      mq.removeEventListener("change", handleChange);
-      window.removeEventListener("mousemove", handleMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
   const words = HEADLINE.split(" ");
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
-      {showVideo ? (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/hero-poster.jpeg"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/hero-hero.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <Image
-          src="/hero-poster.jpeg"
-          alt="Datafy Hub workspace"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      )}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/hero-poster.jpeg"
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/hero-hero.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-dark/70" />
       <div className="bg-grid absolute inset-0 opacity-40" />
       <div
