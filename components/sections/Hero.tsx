@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Button from "../ui/Button";
 
 const HEADLINE = "Your Next Big Idea Starts Here";
@@ -12,9 +13,18 @@ const STATS = ["500+ Members", "9th Floor Views", "High-Speed WiFi"];
 export default function Hero({ onBook }: { onBook: () => void }) {
   const bgRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     setReady(true);
+
+    const mq = window.matchMedia("(min-width: 768px)");
+    setShowVideo(mq.matches);
+    const handleChange = (e: MediaQueryListEvent) => setShowVideo(e.matches);
+    mq.addEventListener("change", handleChange);
+
+    if (!mq.matches) return () => mq.removeEventListener("change", handleChange);
+
     const handleMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -23,31 +33,46 @@ export default function Hero({ onBook }: { onBook: () => void }) {
       }
     };
     window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    return () => {
+      mq.removeEventListener("change", handleChange);
+      window.removeEventListener("mousemove", handleMove);
+    };
   }, []);
 
   const words = HEADLINE.split(" ");
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/hero-hero.mp4" type="video/mp4" />
-      </video>
+      {showVideo ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero-poster.jpeg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/hero-hero.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <Image
+          src="/hero-poster.jpeg"
+          alt="Datafy Hub workspace"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      )}
       <div className="absolute inset-0 bg-dark/70" />
       <div className="bg-grid absolute inset-0 opacity-40" />
       <div
         ref={bgRef}
         className="pointer-events-none absolute inset-0 transition-transform duration-300 ease-out"
       >
-        <div className="absolute left-[10%] top-[20%] h-72 w-72 rounded-full bg-primary/30 opacity-30 blur-[100px] animate-drift dark:opacity-100" />
-        <div className="absolute right-[15%] top-[10%] h-96 w-96 rounded-full bg-accent/20 opacity-30 blur-[120px] animate-drift-slow dark:opacity-100" />
-        <div className="absolute bottom-[10%] left-[30%] h-64 w-64 rounded-full bg-primary/20 opacity-30 blur-[100px] animate-drift-slow dark:opacity-100" />
+        <div className="absolute left-[10%] top-[20%] hidden h-72 w-72 rounded-full bg-primary/30 opacity-30 blur-[100px] animate-drift dark:opacity-100 md:block" />
+        <div className="absolute right-[15%] top-[10%] hidden h-96 w-96 rounded-full bg-accent/20 opacity-30 blur-[120px] animate-drift-slow dark:opacity-100 md:block" />
+        <div className="absolute bottom-[10%] left-[30%] hidden h-64 w-64 rounded-full bg-primary/20 opacity-30 blur-[100px] animate-drift-slow dark:opacity-100 md:block" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white">

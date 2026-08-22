@@ -7,7 +7,7 @@ export default function Loader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 1500);
+    const t = setTimeout(() => setVisible(false), 700);
     return () => clearTimeout(t);
   }, []);
 

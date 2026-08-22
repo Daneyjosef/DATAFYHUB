@@ -6,8 +6,8 @@ import ImageSlideshow from "../ui/ImageSlideshow";
 
 const ABOUT_SLIDES = [
   { src: "/hero-poster.jpeg", alt: "Datafy Hub workspace" },
-  { src: "/hub-1.png", alt: "Datafy Hub study room" },
-  { src: "/hub-2.png", alt: "Datafy Hub seating area" },
+  { src: "/hub-1.jpg", alt: "Datafy Hub study room" },
+  { src: "/hub-2.jpg", alt: "Datafy Hub seating area" },
 ];
 
 const STATS = [
